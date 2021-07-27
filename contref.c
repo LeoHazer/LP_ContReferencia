@@ -5,7 +5,7 @@
 
 memoria *lista = NULL;
 
-void atualiza(memoria *elemento, int contador) { 
+void atualiza(memoria *elemento, int contador) {  //ATUALIZA CONTADOR
     elemento->contador += contador;
     if (elemento->contador == 0)
     {
@@ -30,21 +30,21 @@ void atualiza(memoria *elemento, int contador) {
     }
 }
 
-void *malloc2(int size_) 
+void *malloc2(int size_)
 {
-    void *novaMemoria = (void *)malloc(size_);
+    void *novaMemoria = (void *)malloc(size_);  //ALOCA O ENDEREÇO DE RETORNO
     memoria *novoElemento = (memoria *)malloc(sizeof(memoria));
     novoElemento->endereco = novaMemoria;
     novoElemento->contador = 1;
     novoElemento->prox = NULL;
     if (lista == NULL)
     {
-        lista= novoElemento;
+        lista= novoElemento;  //SE A LISTA ESTIVER VAZIA, CRIA NOVO ELEMENTO
     }
     else
     {
         memoria *aux = lista;
-        while (aux->prox != NULL)
+        while (aux->prox != NULL)  //CASO CONTRÁRIO, ADICIONA NOVO ELEMENTO NO FINAL DA LISTA
         {
             aux = aux->prox;
         }
@@ -53,8 +53,8 @@ void *malloc2(int size_)
     return novaMemoria;
 }
 
-void atrib2(void **b, void *a) 
-{                                               
+void atrib2(void **b, void *a)
+{
     if ((*b) != NULL)
     {
         memoria *percorre = lista;
@@ -80,7 +80,7 @@ void atrib2(void **b, void *a)
     }
 }
 
-void dump()
+void dump() //LIMPA A MEMÓRIA ALOCDA
 {
     memoria *aux=lista;
     while (aux!=NULL)
@@ -91,13 +91,13 @@ void dump()
     }
 }
 
-void print() 
+void print()
 {
     memoria *aux=lista;
     while (aux!=NULL)
     {
-        printf("endereco: %d\t",aux->endereco);
-        printf("ref:%d\n",aux->contador);
+        printf("Endereco: %p\t",aux->endereco);
+        printf("Ref:%d\n",aux->contador);
         aux=aux->prox;
     }
 }

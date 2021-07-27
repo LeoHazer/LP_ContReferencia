@@ -1,29 +1,32 @@
+#include "contref.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "contref.h"
-#include "contref.c"
 #include <assert.h>
 
-
-int main(int argc, char const *argv[])
+int main(int argc, char const * argv[])
 {
+    printf("Cont 1\n\n");
+    int *v = malloc2(sizeof(int));
+    *v = 10;
+    print();
 
-    int i, **p, *q;
-    const int tamanho = 10000000;
+    printf("Cont 2\n\n");
+    int *w = malloc2(sizeof(int));
+    print();
+    *w = 20;
 
+    printf("Cont 3\n\n");
+    atrib2(&v, w);
+    print();
 
-    for (i = 0; i < tamanho; i++)
-    {
-        p = malloc2(sizeof(int));
-        q = malloc2(sizeof(int));
+    printf("Cont 4\n\n");
+    char *c = malloc2(sizeof(char));
+    *c = 'Z';
+    print();
+    atrib2(&w, NULL);
 
-        if(*p=0)
-        *p = realloc(q, 2*sizeof(p));
-        if(i == tamanho-1)
-        print();
-
-    }
+    printf("Cont 5\n\n");
+    print();
     dump();
-
     return 0;
 }
